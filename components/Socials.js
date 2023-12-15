@@ -17,33 +17,33 @@ const socialData = [
   {
     platform: "LinkedIn",
     icon: <RiLinkedinBoxLine />,
-    link: "https://linkedin.com/in/your-username",
+    link: "https://www.linkedin.com/in/sashikanta-mohanty",
   },
   {
     platform: "Twitter",
     icon: <RiTwitterXLine />,
-    link: "https://twitter.com/your-username",
+    link: "https://twitter.com/Sashikantmohan4",
   },
   {
     platform: "Instagram",
     icon: <RiInstagramLine />,
-    link: "https://instagram.com/your-username",
+    link: "https://www.instagram.com/sashikant.mohanty/",
   },
   {
     platform: "Thread",
     icon: <RiThreadsLine />,
-    link: "",
+    link: "https://www.threads.net/@sashikant.mohanty",
   },
   {
     platform: "Facebook",
     icon: <RiFacebookBoxLine />,
-    link: "https://facebook.com/your-username",
+    link: "https://www.facebook.com/sashikant.mohanty.75",
   },
 ];
 
 const Socials = () => {
   return (
-    <div className="flex items-center gap-x-5 text-lg ">
+    <div className="flex items-center gap-x-5 text-xl ">
       {socialData.map((social, index) => (
         <Link
           key={index}
