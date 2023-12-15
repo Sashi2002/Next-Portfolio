@@ -12,9 +12,11 @@ const Header = () => {
           <Link href={"/"}>
             <div className="w-[320px] h-[100px] max-sm:w-[300px] relative lg:right-24 brightness-200">
               <Image
-                src={"/logo.png"}
+                src={"/logo1.png"}
                 layout="fill"
                 objectFit="cover"
+                width={320}
+                height={48}
                 alt=""
                 priority={true}
               />
