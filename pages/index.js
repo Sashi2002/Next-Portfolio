@@ -36,7 +36,7 @@ const Home = () => {
             exit="hidden"
             className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16"
           >
-            I&aposve a strong affinity for crafting visually captivating
+            I&apos;ve a strong affinity for crafting visually captivating
             websites, adept at translating UI designs into animated and
             responsive web experiences.
           </motion.p>
