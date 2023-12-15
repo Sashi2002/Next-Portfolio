@@ -133,7 +133,7 @@ const About = () => {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
+    <div className="h-full bg-primary/30 py-32 text-center xl:text-left max-md:overflow-y-scroll">
       <Circles />
       <motion.div
         variants={fadeIn("right", 0.2)}
@@ -148,7 +148,7 @@ const About = () => {
         {/* text */}
         <div className="flex-1 flex flex-col justify-center ">
           <motion.h2
-            className="h2"
+            className="h2 mt-8"
             variants={fadeIn("right", 0.2)}
             initial="hidden"
             animate="show"
@@ -157,7 +157,47 @@ const About = () => {
             Crafting dazzling <span className="text-accent">designs</span> from
             captivating <span className="text-accent">stories.</span>
           </motion.h2>
-          {/* ... (rest of your code remains unchanged) */}
+          <motion.p
+            variants={fadeIn("right", 0.4)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="max-w-[500px] mx-auto xl:mx-0 xl:mb-12 px-2 xl:px-0"
+          >
+            Student at SRMIST, passionate Front-end Developer shaping digital
+            experiences. Proudly contributing code as a Developer at Soshals.
+            Former Intern at DIYA Labs, where I honed my skills in the realm of
+            technology and innovation. <br />
+            🚀 #TechEnthusiast
+          </motion.p>
+          {/* counters */}
+          <motion.div
+            variants={fadeIn("right", 0.2)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="hidden md:flex md:max-w-xl xl:max-w-none mx-auto xl:mx-0 mb-8 "
+          >
+            <div className="flex flex-1 xl:gap-x-6">
+              {/* experience */}
+              <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
+                <div className="text-2xl xl:text-4xl font-extrabold text-accent">
+                  <CountUp start={0} end={12} duration={5} /> +
+                </div>
+                <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
+                  Months of experience
+                </div>
+              </div>
+              <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
+                <div className="text-2xl xl:text-4xl font-extrabold text-accent">
+                  <CountUp start={0} end={1} duration={5} />
+                </div>
+                <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
+                  Winning Awards
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
         {/* info */}
         <motion.div
@@ -167,7 +207,7 @@ const About = () => {
           exit="hidden"
           className="flex flex-col w-full xl:max-w-[48%] h-[480px] "
         >
-          <div>
+          <div className="mt-2">
             <div className="flex gap-x-4 xl:gap-x-8 mx-auto xl:mx-0 mb-4">
               {aboutData.map((item, itemIndex) => (
                 <div
