@@ -14,7 +14,7 @@ const Services = () => {
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-x-8">
           {/* text */}
-          <div className="text-center flex xl:w-[30vw] flex-col lg:text-left xl:mb-0 max-md:mt-20">
+          <div className="text-center flex xl:w-[30vw] flex-col lg:text-left xl:mb-0">
             <motion.h2
               variants={fadeIn("up", 0.2)}
               initial="hidden"
@@ -22,7 +22,8 @@ const Services = () => {
               exit="hidden"
               className="h2"
             >
-              Crafting <span className="text-accent">Solutions.</span>
+              {/* Crafting <span className="text-accent">Solutions.</span> */}
+              My <span className="text-accent">Services.</span>
             </motion.h2>
             {/* subtitle */}
             <motion.p

@@ -10,17 +10,17 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 const Contact = () => {
   return (
-    <div className=" bg-primary/30 flex justify-center ">
+    <div className="h-full bg-primary/30 flex justify-center">
       <div className="container max-auto py-32 text-center xl:text-left flex items-center justify-center">
         {/* text & form */}
-        <div className="flex flex-col w-full max-w-[700px] max-md:overflow-y-scroll ">
+        <div className="flex flex-col w-full max-w-[700px] contact-scroll">
           {/* text */}
           <motion.h2
             variants={fadeIn("up", 0.2)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="h2 text-center mb-8 max-md:mt-8"
+            className="h2 text-center mb-8 max-md:mb-4"
           >
             Let&apos;s <span className="text-accent">Connent.</span>
           </motion.h2>
