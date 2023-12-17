@@ -66,9 +66,24 @@ body {
 
 /* Media query for mobile view */
 @media only screen and (max-width: 768px) {
-  .scroll {
-    margin-top: 70px;
-    height: 60vh;
+  .contact-scroll {
+    margin-top: 30px;
+    height: 65vh;
+    overflow-y: scroll;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .home-scroll {
+    height: 100vh;
+    overflow-y: scroll;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .about-scroll {
+    margin-top: 20px;
+    height: 63vh;
     overflow-y: scroll;
   }
 }

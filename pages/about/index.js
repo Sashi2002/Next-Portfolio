@@ -133,7 +133,7 @@ const About = () => {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className="h-full bg-primary/30 py-32 text-center xl:text-left max-md:overflow-y-scroll">
+    <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
       <Circles />
       <motion.div
         variants={fadeIn("right", 0.2)}
@@ -144,18 +144,19 @@ const About = () => {
       >
         <Avatar />
       </motion.div>
-      <div className="container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6">
+      <div className="container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6 about-scroll">
         {/* text */}
         <div className="flex-1 flex flex-col justify-center ">
           <motion.h2
-            className="h2 mt-8"
+            className="h2"
             variants={fadeIn("right", 0.2)}
             initial="hidden"
             animate="show"
             exit="hidden"
           >
-            Crafting dazzling <span className="text-accent">designs</span> from
-            captivating <span className="text-accent">stories.</span>
+            {/* Crafting dazzling <span className="text-accent">designs</span> from
+            captivating <span className="text-accent">stories.</span> */}
+            <span className="text-accent">About.</span>
           </motion.h2>
           <motion.p
             variants={fadeIn("right", 0.4)}
