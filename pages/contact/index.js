@@ -1,5 +1,3 @@
-import Circles from "../../components/Circles";
-
 //icons
 import { BsArrowRight } from "react-icons/bs";
 
@@ -11,64 +9,80 @@ import { fadeIn } from "../../variants";
 import React, { useState } from "react";
 import { sendContactForm } from "../../lib/api";
 
+//Chakra UI
+import { useToast } from "@chakra-ui/react";
+
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const initValues = { name: "", email: "", subject: "", message: "" };
 
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const initState = { isLoading: false, error: "", values: initValues };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: "" });
-  };
+  const toast = useToast();
+  const [state, setState] = useState(initState);
+  const [touched, setTouched] = useState({});
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const { values, isLoading, error } = state;
 
-    // Perform validation before submitting the form
-    let newErrors = {};
-    if (formData.name.trim() === "") {
-      newErrors.name = "Name is required";
-    }
-    // Add email validation logic (you can use a library like Yup for this)
-    if (formData.email.trim() === "") {
-      newErrors.email = "Email is required";
-    }
-    if (formData.subject.trim() === "") {
-      newErrors.subject = "Subject is required";
-    }
-    if (formData.message.trim() === "") {
-      newErrors.message = "Message is required";
-    }
+  const onBlur = ({ target }) =>
+    setTouched((prev) => ({ ...prev, [target.name]: true }));
 
-    setErrors(newErrors);
+  const handleChange = ({ target }) =>
+    setState((prev) => ({
+      ...prev,
+      values: {
+        ...prev.values,
+        [target.name]: target.value,
+      },
+    }));
 
-    if (Object.keys(newErrors).length === 0) {
-      try {
-        // Form is valid, send data to the server using sendContactForm
-        const response = await sendContactForm(formData);
+  // const onSubmit = async () => {
+  //   setState((prev) => ({
+  //     ...prev,
+  //     isLoading: true,
+  //   }));
+  //   try {
+  //     await sendContactForm(values);
+  //     setTouched({});
+  //     setState(initState);
+  //     toast({
+  //       title: "Message sent.",
+  //       status: "success",
+  //       duration: 2000,
+  //       position: "top",
+  //     });
+  //   } catch (error) {
+  //     setState((prev) => ({
+  //       ...prev,
+  //       isLoading: false,
+  //       error: error.message,
+  //     }));
+  //   }
+  // };
 
-        if (response.ok) {
-          // Handle successful submission (e.g., show a success message)
-          console.log("Form submitted successfully");
-        } else {
-          // Handle server error (e.g., show an error message)
-          console.error("Error submitting the form");
-        }
-      } catch (error) {
-        // Handle network error or other issues
-        console.error("An unexpected error occurred", error);
-      }
+  const onSubmit = async (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    setState((prev) => ({
+      ...prev,
+      isLoading: true,
+    }));
+
+    try {
+      await sendContactForm(values);
+      setTouched({});
+      setState(initState);
+      toast({
+        title: "Message sent.",
+        status: "success",
+        duration: 2000,
+        position: "top",
+      });
+    } catch (error) {
+      setState((prev) => ({
+        ...prev,
+        isLoading: false,
+        error: error.message,
+      }));
     }
   };
 
@@ -94,59 +108,77 @@ const Contact = () => {
             animate="show"
             exit="hidden"
             className="flex-1 flex flex-col gap-6 w-full mx-auto"
-            onSubmit={handleSubmit}
+            // onSubmit={onSubmit}
           >
             {/* input group */}
             <div className="flex gap-x-6 w-full">
               <input
                 type="text"
-                placeholder="name *"
-                className={`input ${errors.name && "input-error"}`}
+                placeholder="Name *"
+                className={`input ${error.name && "input-error"}`}
                 name="name"
-                value={formData.name}
+                value={values.name}
                 onChange={handleChange}
+                onBlur={onBlur}
               />
-              {errors.name && (
-                <span className="text-red-500">{errors.name}</span>
-              )}
+              {error.name && <span className="text-red-500">{error.name}</span>}
               <input
                 type="text"
-                placeholder="email *"
-                className={`input ${errors.email && "input-error"}`}
+                placeholder="Email *"
+                className={`input ${error.email && "input-error"}`}
                 name="email"
-                value={formData.email}
+                value={values.email}
                 onChange={handleChange}
+                onBlur={onBlur}
               />
-              {errors.email && (
-                <span className="text-red-500">{errors.email}</span>
+              {error.email && (
+                <span className="text-red-500">{error.email}</span>
               )}
             </div>
             <input
               type="text"
-              placeholder="subject *"
-              className={`input ${errors.subject && "input-error"}`}
+              placeholder="Subject *"
+              className={`input ${error.subject && "input-error"}`}
               name="subject"
-              value={formData.subject}
+              value={values.subject}
               onChange={handleChange}
+              onBlur={onBlur}
             />
-            {errors.subject && (
-              <span className="text-red-500">{errors.subject}</span>
+            {error.subject && (
+              <span className="text-red-500">{error.subject}</span>
             )}
             <textarea
-              placeholder="message *"
-              className={`textarea ${errors.message && "textarea-error"}`}
+              placeholder="Message *"
+              className={`textarea ${error.message && "textarea-error"}`}
               name="message"
-              value={formData.message}
+              value={values.message}
               onChange={handleChange}
+              onBlur={onBlur}
             ></textarea>
-            {errors.message && (
-              <span className="text-red-500">{errors.message}</span>
+            {error.message && (
+              <span className="text-red-500">{error.message}</span>
             )}
-            <button className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group">
-              <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
-                Let&apos;s talk
-              </span>
-              <BsArrowRight className="-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px] " />
+            <button
+              disabled={
+                isLoading ||
+                !values.name ||
+                !values.email ||
+                !values.subject ||
+                !values.message
+              }
+              onClick={onSubmit}
+              className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
+            >
+              {isLoading ? (
+                <span>Loading...</span>
+              ) : (
+                <>
+                  <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
+                    Let&apos;s talk
+                  </span>
+                  <BsArrowRight className="-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]" />
+                </>
+              )}
             </button>
           </motion.form>
         </div>
