@@ -34,7 +34,6 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     // Perform validation before submitting the form
     let newErrors = {};
     if (formData.name.trim() === "") {
@@ -51,9 +50,9 @@ const Contact = () => {
       newErrors.message = "Message is required";
     }
 
-    setErrors(newErrors);
-
-    if (Object.keys(newErrors).length === 0) {
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+    } else {
       try {
         // Form is valid, send data to the server using sendContactForm
         const response = await sendContactForm(formData);
