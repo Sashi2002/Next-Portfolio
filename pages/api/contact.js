@@ -1,5 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 import { mailOptions, transporter } from "../../config/nodemailer";
 
 const CONTACT_MESSAGE_FIELDS = {
@@ -28,10 +26,8 @@ const generateEmailContent = (data) => {
 const handler = async (req, res) => {
   if (req.method === "POST") {
     const data = req.body;
-
-    // Check if the required fields are present in the data
     if (!data || !data.name || !data.email || !data.subject || !data.message) {
-      return res.status(400).json({ message: "Bad request" });
+      return res.status(400).send({ message: "Bad request" });
     }
 
     try {
@@ -42,14 +38,11 @@ const handler = async (req, res) => {
       });
 
       return res.status(200).json({ success: true });
-    } catch (error) {
-      console.log(error);
-      return res.status(400).json({ message: error.message });
+    } catch (err) {
+      console.log(err);
+      return res.status(400).json({ message: err.message });
     }
   }
-
-  // Handle other HTTP methods if needed
-  return res.status(405).json({ message: "Method Not Allowed" });
+  return res.status(400).json({ message: "Bad request" });
 };
-
 export default handler;
