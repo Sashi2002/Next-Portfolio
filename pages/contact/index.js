@@ -18,7 +18,9 @@ const Contact = () => {
   const initState = { isLoading: false, error: "", values: initValues };
 
   const toast = useToast();
+
   const [state, setState] = useState(initState);
+
   const [touched, setTouched] = useState({});
 
   const { values, isLoading, error } = state;
