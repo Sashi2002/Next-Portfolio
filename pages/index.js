@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 //components
 import ParticlesContainer from "../components/ParticlesContainer";
 import ProjectsBtn from "../components/ProjectsBtn";
@@ -25,8 +23,8 @@ const Home = () => {
             exit="hidden"
             className="h1"
           >
-            Transforming Ideas <br /> Into{" "}
-            <span className="text-accent">Digital Reality</span>
+            Digital Dreams: <br />
+            <span className="text-accent"> Crafting Reality </span>
           </motion.h1>
           {/* subtitle */}
           <motion.p
