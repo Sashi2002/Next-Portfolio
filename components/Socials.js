@@ -48,6 +48,9 @@ const Socials = () => {
         <Link
           key={index}
           href={social.link}
+          passHref
+          target="_blank"
+          rel="noopener noreferrer"
           className="hover:text-accent transition-all duration-300"
         >
           {social.icon}

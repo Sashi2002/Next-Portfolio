@@ -22,19 +22,23 @@ const workSlides = {
       images: [
         {
           title: "title",
-          path: "/thumb1.jpg",
+          path: "/project1.jpg",
+          link: "https://soshals.app/login",
         },
         {
           title: "title",
-          path: "/thumb2.jpg",
+          path: "/project2.jpg",
+          link: "https://aaruush.org/",
         },
         {
           title: "title",
-          path: "/thumb3.jpg",
+          path: "/project3.jpg",
+          link: "https://welfare-wave.vercel.app/",
         },
         {
           title: "title",
-          path: "/thumb4.jpg",
+          path: "/project4.jpg",
+          link: "https://bookies-one.vercel.app/",
         },
       ],
     },
@@ -42,19 +46,23 @@ const workSlides = {
       images: [
         {
           title: "title",
-          path: "/thumb4.jpg",
+          path: "/project5.jpg",
+          link: "https://humankind-nu.vercel.app/",
         },
         {
           title: "title",
-          path: "/thumb1.jpg",
+          path: "/project6.jpg",
+          link: "https://tsummit.aaruush.org/",
         },
         {
           title: "title",
-          path: "/thumb2.jpg",
+          path: "/project7.jpg",
+          link: "https://team-loading-kvjr31b5j-team-envision-2023.vercel.app/",
         },
         {
           title: "title",
-          path: "/thumb3.jpg",
+          path: "/project8.jpg",
+          link: "https://fintech-relay.vercel.app/",
         },
       ],
     },
@@ -62,25 +70,6 @@ const workSlides = {
 };
 
 const WorkSlider = () => {
-  // const [slidesPerView, setSlidesPerView] = useState(3);
-  // useEffect(() => {
-  //   // Function to update slidesPerView based on screen width
-  //   const handleResize = () => {
-  //     const newSlidesPerView = window.innerWidth <= 767 ? 1 : 3;
-  //     setSlidesPerView(newSlidesPerView);
-  //   };
-
-  //   // Set initial value of slidesPerView
-  //   handleResize();
-
-  //   // Attach the event listener to handle resize changes
-  //   window.addEventListener("resize", handleResize);
-
-  //   // Clean up the event listener when the component is unmounted
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
   return (
     <Swiper
       // slidesPerView={slidesPerView}
@@ -107,13 +96,6 @@ const WorkSlider = () => {
       {workSlides.slides.map((slide, index) => {
         return (
           <SwiperSlide key={index}>
-            {/* <Link
-              href={items.link}
-              passHref
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-            </Link> */}
             <div className="grid grid-cols-2 grid-rows-2 gap-4 cursor-pointer">
               {slide.images.map((image, index) => {
                 return (
@@ -123,7 +105,7 @@ const WorkSlider = () => {
                   >
                     <div className="flex items-center justify-center relative overflow-hidden group">
                       {/* images */}
-                      <Image src={image.path} width={500} height={300} alt="" />
+                      <Image src={image.path} width={750} height={470} alt="" />
                       {/* overlay gradient */}
                       <div
                         className="absolute inset-0 opacity-0 group-hover:opacity-80 transition-all duration-700"
@@ -133,18 +115,26 @@ const WorkSlider = () => {
                         }}
                       ></div>
                       {/* title */}
-                      <div className="absolute bottom-0 translate-y-full group-hover:-translate-y-10 group-hover:xl:-translate-y-20 transition-all duration-300">
-                        <div className="flex items-center gap-x-2 text-[13px] tracking-[0.2em]">
-                          <div className="delay-100"> LIVE </div>
-                          <div className="translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-150">
-                            {" "}
-                            PROJECT{" "}
+
+                      <div className="absolute bottom-0 translate-y-full group-hover:-translate-y-12 group-hover:xl:-translate-y-28 transition-all duration-300">
+                        <Link
+                          href={image.link}
+                          passHref
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <div className="flex items-center gap-x-2 text-[13px] tracking-[0.2em]">
+                            <div className="delay-100"> LIVE </div>
+                            <div className="translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-150">
+                              {" "}
+                              PROJECT{" "}
+                            </div>
+                            <div className="text-xl translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-200">
+                              {" "}
+                              <BsArrowRight />{" "}
+                            </div>
                           </div>
-                          <div className="text-xl translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-200">
-                            {" "}
-                            <BsArrowRight />{" "}
-                          </div>
-                        </div>
+                        </Link>
                       </div>
                     </div>
                   </div>
