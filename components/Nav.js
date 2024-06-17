@@ -60,6 +60,7 @@ const Nav = () => {
           );
         })}
       </div>
+      <h1 className="text-2xl">Harsh</h1>
     </nav>
   );
 };
