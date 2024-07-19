@@ -8,6 +8,7 @@ import {
   FaReact,
   FaPython,
   FaNodeJs,
+  FaJava,
 } from "react-icons/fa";
 
 import {
@@ -35,6 +36,7 @@ const aboutData = [
           <FaJs key="js" />,
           <SiTypescript key="typescript" />,
           <FaPython key="python" />,
+          <FaJava key="java" />,
         ],
       },
       {
@@ -57,6 +59,10 @@ const aboutData = [
     title: "awards",
     info: [
       {
+        title: "JPMC Code for <good> Hackathon - Winner",
+        stage: "Jun 2024",
+      },
+      {
         title: "Kodekshetra Hackathon - Runner Up",
         stage: "Apr 2023",
       },
@@ -75,11 +81,11 @@ const aboutData = [
     info: [
       {
         title: "Full-stack Development Intern - Soshals",
-        stage: "Aug 2023 - Present",
+        stage: "Aug 2023 - Feb 2024",
       },
       {
         title: "Web Developer Intern - DIYA Robotics",
-        stage: "Jun 2023 - Sept 2023",
+        stage: "Jun 2023 - Jul 2023",
       },
     ],
   },
@@ -87,12 +93,24 @@ const aboutData = [
     title: "credentials",
     info: [
       {
-        title: "Back-End Apps with Node.js and Express - Coursera",
+        title: "SQL for Developers, Data Analysts - Udemy",
+        stage: "Jul 2024",
+      },
+      {
+        title: "Developing Back-End with Node.js and Express - Coursera",
         stage: "Nov 2023",
       },
       {
-        title: "AWS Academy Cloud Foundation - AWS Academy",
+        title: "Ethical Hacking - NPTEL",
         stage: "Oct 2023",
+      },
+      {
+        title: "Introduction to DevOps - Coursera",
+        stage: "Oct 2023",
+      },
+      {
+        title: "AWS Academy Cloud Foundation - AWS Academy",
+        stage: "Sept 2023",
       },
       {
         title: "JavaScript by Jonas Schmedtmann - UDEMY",
@@ -103,16 +121,16 @@ const aboutData = [
         stage: "May 2023",
       },
       {
-        title: "Networking Essentials - CISCO",
+        title: "Programming in Java - NPTEL",
         stage: "Apr 2023",
+      },
+      {
+        title: "Networking Essentials - CISCO",
+        stage: "Mar 2023",
       },
       {
         title: "Bootcamp on JavaScript & React.Js - Devtown",
         stage: "Jan 2023",
-      },
-      {
-        title: "Object Oriented Programming - Elab",
-        stage: "Nov 2022",
       },
     ],
   },
